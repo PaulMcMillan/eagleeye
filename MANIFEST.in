@@ -1,0 +1,3 @@
+include README.rst LICENSE
+prune tests
+
