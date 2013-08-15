@@ -9,7 +9,7 @@ Installation
 
 Usage:
  * Install external dependencies:
-   `sudo apt-get install xvfb chromium-browser unzip`
+   `sudo apt-get install chromium-browser unzip xvfb`
 
  * Install chromedriver:
    `curl https://chromedriver.googlecode.com/files/chromedriver_linux64_2.2.zip | funzip > chromedriver
