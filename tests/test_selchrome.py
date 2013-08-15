@@ -7,13 +7,13 @@ def test_base():
         worker.qinput.send(url)
 
     job = True
-    while job:
-        job = worker().next()
+    for job in worker:
+        if not job:
+            break
         print job
 
     worker = WriteScreenshot()
-    job = True
-    while job:
-        job = worker().next()
-
-
+    for job in worker:
+        if not job:
+            break
+        print(len(job))

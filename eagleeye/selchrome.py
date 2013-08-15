@@ -11,8 +11,8 @@ import selenium.webdriver.chrome.service as chrome_service
 
 from selenium import webdriver
 
-from tasa.worker import BaseWorker
 from tasa.store import Queue
+from tasa.worker import BaseWorker
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -29,7 +29,7 @@ class SeleniumWorker(BaseWorker):
         super(SeleniumWorker, self).__init__(*args, **kwargs)
 
         # set up the xvfb display
-        self.display = pyvirtualdisplay.Display(visible=0, size=(1280, 2560))
+        self.display = pyvirtualdisplay.Display(visible=0, size=(1280, 1280))
         self.display.start()
 
         # NOTE: This DOES change the socket timeout globally. There's
@@ -63,12 +63,12 @@ class SeleniumWorker(BaseWorker):
                 self.service.service_url,
                 desired_capabilities=self.options.to_capabilities())
             # These timeout commands don't presently work with
-            # chromedriver. Leaving them in in case the chromedriver
-            # people suddenly fix this issue:
+            # chromedriver (v23). Leaving them in in case the
+            # chromedriver people suddenly fix this issue:
             # https://code.google.com/p/chromedriver/issues/detail?id=9
-            self._driver.set_script_timeout(30)
-            self._driver.implicitly_wait(30)
-            self._driver.set_page_load_timeout(30)
+            self._driver.set_script_timeout(15)
+            self._driver.implicitly_wait(15)
+            self._driver.set_page_load_timeout(15)
         return self._driver
 
     def terminate_driver(self):
