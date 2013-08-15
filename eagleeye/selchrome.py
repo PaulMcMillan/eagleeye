@@ -14,9 +14,11 @@ from selenium import webdriver
 from tasa.store import Queue
 from tasa.worker import BaseWorker
 
+
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.INFO)
 SOCKET_TIMEOUT = 30
+
 
 class SeleniumWorker(BaseWorker):
     qinput = Queue('image:http')
@@ -29,7 +31,7 @@ class SeleniumWorker(BaseWorker):
         super(SeleniumWorker, self).__init__(*args, **kwargs)
 
         # set up the xvfb display
-        self.display = pyvirtualdisplay.Display(visible=0, size=(1280, 1280))
+        self.display = pyvirtualdisplay.Display(visible=0, size=(1280, 1024))
         self.display.start()
 
         # NOTE: This DOES change the socket timeout globally. There's

@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 version = '0.1.0'
 
 setup(
-    name="eagleeye",
+    name="eagleeye_te",
     version=version,
     description="Distributed tool for screenshotting webpages.",
     long_description=open("README.rst").read(),
@@ -12,6 +12,12 @@ setup(
     license="Simplified BSD",
     author="Paul McMillan",
     author_email="paul@mcmillan.ws",
+
+    entry_points={
+        'console_scripts': [
+            'eagleeye = eagleeye.cli:run',
+            ],
+        },
 
     install_requires=[
         "tasa",
