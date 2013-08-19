@@ -70,7 +70,12 @@ class SeleniumWorker(BaseWorker):
             # https://code.google.com/p/chromedriver/issues/detail?id=9
             self._driver.set_script_timeout(15)
             self._driver.implicitly_wait(15)
-            self._driver.set_page_load_timeout(15)
+            try:
+                self._driver.set_page_load_timeout(15)
+            except selenium.common.exceptions.WebDriverException:
+                # this is for backwards compatibility with non 2.x
+                # chromedriver releases.
+                pass
         return self._driver
 
     def terminate_driver(self):
