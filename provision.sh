@@ -1,11 +1,10 @@
 #!/bin/bash
-# get the latest setuptools
-wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
-# install the latest pip
-wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py -O - | python
 
-# install our other dependencies
-apt-get install chromium-browser unzip xvfb
+# update our package list
+sudo apt-get update
+
+# install our dependencies
+sudo apt-get -y install chromium-browser python-pip redis-server unzip xvfb
 
 # install chromedriver
 curl https://chromedriver.googlecode.com/files/chromedriver_linux64_2.2.zip | funzip > chromedriver
