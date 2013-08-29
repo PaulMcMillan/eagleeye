@@ -152,7 +152,7 @@ class WriteScreenshot(BaseWorker):
         # from the old project.
         screenshot, url = job
         binary_screenshot = base64.b64decode(screenshot)
-        file_name = url.replace('://', '_').replace(':', '_')
+        file_name = url.replace(':', '_').replace('/', '_')
         file_path = os.path.join(os.getcwd(), 'out/%s.png' % file_name)
         with open(file_path, 'w') as f:
             f.write(binary_screenshot)

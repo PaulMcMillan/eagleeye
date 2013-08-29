@@ -23,6 +23,7 @@ setup(
         "tasa",
         "selenium",
         "pyvirtualdisplay",
+        "requests",
         ],
     extras_require={
         "tests": [
