@@ -12,6 +12,8 @@ Usage:
 $mkdir out
 $chmod +X shodfeed.py
 $export SHODAN_API_KEY=A12E3C56787...
+$tasa eagleeye:PrecheckHTTP
+$tasa eagleeye:PrecheckHTTPS
 $tasa eagleeye:Screenshot &
 $tasa eagleeye:Writer &
 $./shodfeed.py your_query_here
