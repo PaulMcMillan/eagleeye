@@ -114,7 +114,7 @@ class SeleniumWorker(BaseWorker):
         try:
             driver.get(target_url)
             self.dismiss_alerts()
-            logger.info('Loaded %s' % target_url)
+            logger.debug('Loaded %s' % target_url)
 
             screenshot = driver.get_screenshot_as_base64()
 
@@ -133,6 +133,7 @@ class SeleniumWorker(BaseWorker):
             self.terminate_driver()
         if screenshot:
             yield [screenshot, target_url]
+            logger.debug('Finished %s', target_url)
 
     def __del__(self):
         socket.setdefaulttimeout(self.original_socket_timeout)

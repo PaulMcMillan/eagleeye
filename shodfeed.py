@@ -37,10 +37,10 @@ def get_shodan_result(query, api_key, page=1):
         logger.info('Finished shodan results with %s page(s).', page - 1)
     else:
         for r in res.get('matches', []):
-            url = 'http://%s:%s' % (r['ip'], r['port'])
-            logger.debug('Sending: %s', url)
-            eagleeye.PrecheckHTTP.qinput.send(url)
-        return res
+            t = (r['ip'], r['port'])
+            logger.debug('Sending: %s %s', *t)
+            eagleeye.PrecheckHTTP.qinput.send(t)
+        return res.get('matches', [])
 
 
 if __name__ == '__main__':
