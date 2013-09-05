@@ -3,6 +3,7 @@ import httplib
 import logging
 import os
 import socket
+import time
 
 import pyvirtualdisplay
 import selenium.common
@@ -54,6 +55,11 @@ class SeleniumWorker(BaseWorker):
     @property
     def service(self):
         if self._service is None:
+            # sometimes this raises exceptions. I'm not sure
+            # why... I'm not catching the exception because it's
+            # better to die and get cleaned up than create a bunch
+            # more extra chrome processes. We're still leaking them
+            # somewhere though.
             self._service = chrome_service.Service('chromedriver')
             self._service.start()
         return self._service
