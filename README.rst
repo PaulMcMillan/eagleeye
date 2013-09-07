@@ -9,7 +9,7 @@ Installation
 
 * Install external dependencies:
  
-  ``sudo apt-get install chromium-browser python-pip redis-server unzip xvfb``
+  ``sudo apt-get install -y chromium-browser python-pip redis-server unzip xvfb``
 
 * Install chromedriver:
  
